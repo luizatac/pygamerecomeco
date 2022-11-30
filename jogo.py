@@ -234,3 +234,17 @@ class Game:
             'food'  : pygame.sprite.RenderPlain(imcomidas([Random.randint(200, 600), 0])),
             'player' : pygame.sprite.RenderPlain(self.player),
         }
+
+#Começa o jogo 
+        self.background = Background('./imagens/ceuu.png')
+
+        pos         = [self.screen_size[0] / 2, self.screen_size[1]]
+        self.player = Baloo(pos, lives=4)
+
+        self.player_life = JogadorLifeStatus(self.player, [5, 5], image=self.image_player_status)
+        self.player_xp   = JogadorXPStatus(self.player, [self.screen_size[0] - 100, 5], fgcolor="0xff0000")
+        
+        self.list = {
+            'food'  : pygame.sprite.RenderPlain(imcomidas([Random.randint(200, 600), 0])),
+            'player' : pygame.sprite.RenderPlain(self.player),
+        }
