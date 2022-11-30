@@ -35,3 +35,34 @@ class Player(Sprite):
     def accel_right(self):
         speed = self.get_speed()
         self.set_speed((speed[0] + self.acceleration[0],speed[1]))
+
+class Baloo(Player):
+    
+    def __init__(self, position, lives=10):
+        image = './imagens/baloot.png'
+
+        Player.__init__(self, position, lives, [0, 0], image)
+        self.set_XP(0)
+
+    def update(self, dt):
+        move_speed = (self.speed[0] * dt / 16, self.speed[1] * dt / 16)
+        self.rect = self.rect.move(move_speed)
+
+        if (self.rect.right > self.area.right):
+            self.rect.right = self.area.right
+        elif (self.rect.left < 0):
+            self.rect.left = 0
+
+        if (self.rect.bottom > self.area.bottom):
+            self.rect.bottom = self.area.bottom
+        elif (self.rect.top < 0):
+            self.rect.top = 0
+
+    def get_pos(self):
+        return (self.rect.center[0], self.rect.top)
+
+    def get_XP(self):
+        return self.XP
+
+    def set_XP(self, XP):
+        self.XP = XP
