@@ -59,7 +59,7 @@ class Game:
     nivel = 20
 
 
-    def _init_(self, size):
+    def __init__(self, size):
         actors = {}
         pygame.init()
         flags = DOUBLEBUF

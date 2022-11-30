@@ -4,8 +4,8 @@ from pygame.locals import *
 
 class Sprite(pygame.sprite.Sprite):
 
-    def _init_(self, image, position, speed=None):
-        pygame.sprite.Sprite._init_(self)
+    def __init__(self, image, position, speed=None):
+        pygame.sprite.Sprite.__init__(self)
 
         self.image  = pygame.image.load(image)
         self.rect   = self.image.get_rect()

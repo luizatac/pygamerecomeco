@@ -7,10 +7,10 @@ from sprites import Sprite
 
 class Player(Sprite):
     
-    def _init_(self, position, lives=0, speed=[0, 0], image=None):
+    def __init__(self, position, lives=0, speed=[0, 0], image=None):
         self.acceleration = [5, 5]
 
-        Sprite._init_(self, image, position, speed)
+        Sprite.__init__(self, image, position, speed)
         self.set_lives(lives)
 
     def get_lives(self):
@@ -75,7 +75,7 @@ class JogadorXPStatus:
     bgcolor = None
     image   = None
 
-    def _init_(self, player, pos=None, font=None, ptsize=30, fgcolor="0xffff00", bgcolor=None):
+    def __init__(self, player, pos=None, font=None, ptsize=30, fgcolor="0xffff00", bgcolor=None):
         self.player  = player
         self.fgcolor = pygame.color.Color(fgcolor)
         if bgcolor:
@@ -111,7 +111,7 @@ class JogadorLifeStatus:
     image      = None
     size_image = None
     spacing    = 5
-    def _init_(self, player, pos=None, image=None):
+    def __init__(self, player, pos=None, image=None):
         image = './imagens/vidasc.png'
         self.image = pygame.image.load(image)
 
