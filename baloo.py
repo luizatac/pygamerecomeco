@@ -34,4 +34,4 @@ class Player(Sprite):
 
     def accel_right(self):
         speed = self.get_speed()
-        self.set_speed((speed[0] + self.acceleration[0],speed[1])
+        self.set_speed((speed[0] + self.acceleration[0],speed[1]))
