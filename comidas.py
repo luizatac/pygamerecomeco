@@ -36,3 +36,10 @@ class imcomidas(Comidas):
         {'image': './imagens/brocolis.png', 'pontos': 1},
         
     ]
+    
+    def __init__(self, position, speed=None):
+        c = random.choice(self.foods)
+
+        image = c['image']
+        pontos = c['pontos'] 
+        Comidas.__init__(self, position, speed, image)
