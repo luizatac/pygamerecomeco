@@ -1,6 +1,6 @@
 # pygamerecomeco
 
-Projeto Final de Desenvolvimento de Software feito por: Giulia Roggero
+Projeto Final de Desenvolvimento de Software feito por: Giulia Roggero e Luiza Coutinho
 -Sobre o projeto:
 -Assets: Pasta com algumas ferramentas basicas do jogo 
 -Sounds: Pasta com todos os sons utilizados no jogo 
