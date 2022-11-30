@@ -3,7 +3,6 @@ import pygame
 from pygame.locals import *
 import random as Random
 import pygame.mixer 
-import sys
 
 from comidas import imcomidas
 from baloo import Baloo, JogadorXPStatus, JogadorLifeStatus
@@ -12,14 +11,15 @@ from pygame.mixer import Sound
 class Background:
 
     image = None
-    pos   = None
+    pos = None
 
     def __init__(self, image):
+        pygame.display.init()
         image = pygame.image.load(image).convert()
 
         self.isize  = image.get_size()
-        self.pos    = [0, -1 * self.isize[1]]
-        screen      = pygame.display.get_surface()
+        self.pos = [0, -1 * self.isize[1]]
+        screen  = pygame.display.get_surface()
         screen_size = screen.get_size()
 
         from math import ceil
@@ -150,7 +150,7 @@ class Game:
                 self.latido.play()
             return jogador.is_dead()
 
-    def actors_act( self ):
+    def actors_act(self):
         self.actor_check_hit(self.player, self.list['food'], self.player.do_collision)
 
         if self.player.is_dead():
@@ -266,6 +266,6 @@ if __name__ == '__main__':
     pygame.mixer.music.load(os.path.join('snd','musicafundo.ogg'))
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.5)
-    game = Game((800, 600))
+    game = Game((800,600))
     while True:
         game.loop()
