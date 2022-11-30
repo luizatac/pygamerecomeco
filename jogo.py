@@ -248,3 +248,24 @@ class Game:
             'food'  : pygame.sprite.RenderPlain(imcomidas([Random.randint(200, 600), 0])),
             'player' : pygame.sprite.RenderPlain(self.player),
         }
+
+#loop principal
+        while self.run and not self.menu_open:
+            clock.tick(1000 / tempo)
+            self.handle_events()            
+            self.actors_update(tempo)
+            self.food_check_pos()
+            self.actors_act()
+            self.manage()
+            self.actors_draw()        
+            pygame.display.flip()
+
+
+if __name__ == '__main__':
+    pygame.mixer.init()
+    pygame.mixer.music.load(os.path.join('snd','musicafundo.ogg'))
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.5)
+    game = Game((800, 600))
+    while True:
+        game.loop()
