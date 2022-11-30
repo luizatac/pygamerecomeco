@@ -120,7 +120,7 @@ class JogadorLifeStatus:
         self.size_image = self.image.get_size()
         self.last_rect  = None
 
-    def update(self, dt):
+    def update(self, tempo):
         pass
 
     def draw(self, screen):
