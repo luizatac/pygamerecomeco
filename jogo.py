@@ -8,6 +8,7 @@ from comidas import imcomidas
 from baloo import Baloo, JogadorXPStatus, JogadorLifeStatus
 from pygame.mixer import Sound
 
+#classe do fundo
 class Background:
 
     image = None
@@ -42,6 +43,7 @@ class Background:
     def draw(self, screen):
         screen.blit(self.image, self.pos)
 
+#classe do jogo
 class Game:
     screen = None
     screen_size = None
@@ -69,10 +71,10 @@ class Game:
         pygame.mouse.set_visible(0)
         pygame.display.set_caption('BellyBaloo') 
         self.load_images()
+        #sons de quando acerta e erra
         pygame.mixer.init()
         self.latido = pygame.mixer.Sound(os.path.join('snd','latido.wav'))
         self.latido.set_volume(0.5)
-
         self.choro = pygame.mixer.Sound(os.path.join('snd','choro.wav'))
         self.choro.set_volume(0.5) 
 
@@ -84,11 +86,12 @@ class Game:
             img.convert()
             img.set_colorkey(( 255, 0, 255), RLEACCEL)
             return img
+        #imagem das vidas
         self.image_player_status = load_image('vidasc.png')
 
     def handle_events(self):
         player = self.player
-
+        #teclas
         for event in pygame.event.get():
             t = event.type
             if t in (KEYDOWN, KEYUP):
@@ -162,6 +165,7 @@ class Game:
 
     def food_check_pos(self):
 
+        #se o jogador deixa cair uma comida sem encostar no baloo
         for sprite in self.list['food'].sprites():
             if sprite.is_lost():
                 self.list['food'].remove(sprite)
@@ -176,6 +180,7 @@ class Game:
             food.set_pos([x , - size[1]])
             self.list['food'].add(food)
 
+    #tela de menu
     def menu(self):
         self.background = Background('./imagens/ceuu.png')
         self.background.draw(self.screen)
@@ -183,7 +188,8 @@ class Game:
         img = pygame.image.load('imagens/baloop.png').convert_alpha() 
         img = pygame.transform.scale(img, (350, 400))
         self.screen.blit(img, (200, 115))
-
+        
+        #tela de menu se perder ou se começar
         if(self.fim):
             self.font = pygame.font.Font(None, 50)
             self.write_on_screen(u'VOCÊ PERDEU :(', (0, 0, 0), (290, 60))
@@ -235,19 +241,6 @@ class Game:
             'player' : pygame.sprite.RenderPlain(self.player),
         }
 
-#Começa o jogo 
-        self.background = Background('./imagens/ceuu.png')
-
-        pos         = [self.screen_size[0] / 2, self.screen_size[1]]
-        self.player = Baloo(pos, lives=4)
-
-        self.player_life = JogadorLifeStatus(self.player, [5, 5], image=self.image_player_status)
-        self.player_xp   = JogadorXPStatus(self.player, [self.screen_size[0] - 100, 5], fgcolor="0xff0000")
-        
-        self.list = {
-            'food'  : pygame.sprite.RenderPlain(imcomidas([Random.randint(200, 600), 0])),
-            'player' : pygame.sprite.RenderPlain(self.player),
-        }
 
 #loop principal
         while self.run and not self.menu_open:
@@ -260,7 +253,7 @@ class Game:
             self.actors_draw()        
             pygame.display.flip()
 
-
+#musica de fundo do jogo
 if __name__ == '__main__':
     pygame.mixer.init()
     pygame.mixer.music.load(os.path.join('snd','musicafundo.ogg'))
