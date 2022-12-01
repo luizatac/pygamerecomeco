@@ -1,5 +1,3 @@
-# pygamerecomeco
-
 Projeto Final de Desenvolvimento de Software feito por: Giulia Roggero e Luiza Coutinho
 -Sobre o projeto:
 -Assets: Pasta com algumas ferramentas basicas do jogo 
@@ -11,6 +9,7 @@ Projeto Final de Desenvolvimento de Software feito por: Giulia Roggero e Luiza C
     -Para iniciar o jogo basta clicar no espaço do teclado
     -Ápos perder o jogo, basta apertar o espaço do teclado para recomeçar
     -O objetivo é fazer a maior pontuação possivel
+-Link vídeo jogo: https://youtu.be/AApfXRbDGrg
 
 
 
