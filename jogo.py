@@ -8,6 +8,7 @@ from comidas import imcomidas
 from baloo import Baloo, JogadorXPStatus, JogadorLifeStatus
 from pygame.mixer import Sound
 
+# Comentário feito apenas para poder dar o pull request. Não foram feitas implementações.
 class Background:
 
     image = None
