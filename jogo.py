@@ -188,23 +188,25 @@ class Game:
         img = pygame.image.load('imagens/baloop.png').convert_alpha() 
         img = pygame.transform.scale(img, (350, 400))
         self.screen.blit(img, (200, 115))
-
+        
     def menu_func(self):
         #tela de menu se perder ou se começar
+        tam_fonte = 50
+        tam_fonte2 = 30
         if(self.fim):
-            self.font = pygame.font.Font(None, 50)
+            self.font = pygame.font.Font(None, tam_fonte)
             self.write_on_screen(u'VOCÊ PERDEU :(', (0, 0, 0), (290, 60))
 
-            self.font = pygame.font.Font(None, 50)
+            self.font = pygame.font.Font(None, tam_fonte)
             self.write_on_screen(u'Pontuação: % 4d' % self.player.get_XP(), (0, 0, 0), (280, 100))
                 
-            self.font = pygame.font.Font(None, 30)
+            self.font = pygame.font.Font(None, tam_fonte2)
             self.write_on_screen(u'Pressione a tecla ESPAÇO para recomeçar!', (0, 0, 0), (235, 560))
         else:          
-            self.font = pygame.font.Font(None, 50)
+            self.font = pygame.font.Font(None, tam_fonte)
             self.write_on_screen(u'BELLY BALOO', (0, 0, 0), (290, 60))
 
-            self.font = pygame.font.Font(None, 30)
+            self.font = pygame.font.Font(None, tam_fonte2)
             self.write_on_screen(u'Pressione a tecla ESPAÇO para começar!', (0, 0, 0), (235, 560))
 
 
@@ -222,13 +224,14 @@ class Game:
             clock.tick(1000 / tempo)
             
             self.menu()
+
             self.menu_func()
 
             self.handle_events()
 
             pygame.display.flip()
 
- 
+
         #Começa o jogo 
         self.background = Background('./imagens/ceuu.png')
 
