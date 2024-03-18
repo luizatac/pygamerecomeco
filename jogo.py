@@ -188,7 +188,8 @@ class Game:
         img = pygame.image.load('imagens/baloop.png').convert_alpha() 
         img = pygame.transform.scale(img, (350, 400))
         self.screen.blit(img, (200, 115))
-        
+
+    def menu_func(self):
         #tela de menu se perder ou se começar
         if(self.fim):
             self.font = pygame.font.Font(None, 50)
@@ -221,12 +222,13 @@ class Game:
             clock.tick(1000 / tempo)
             
             self.menu()
+            self.menu_func()
 
             self.handle_events()
 
             pygame.display.flip()
 
-
+ 
         #Começa o jogo 
         self.background = Background('./imagens/ceuu.png')
 

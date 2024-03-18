@@ -21,7 +21,8 @@ class Comidas(Sprite):
         self.ajeitav(speed[0] + self.acceleration[0], speed[1])
 
     def is_lost(self):
-        return self.get_pos()[1] >= 600
+        val_lost = 600
+        return self.get_pos()[1] >= val_lost
 
 
 class imcomidas(Comidas):
