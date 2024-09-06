@@ -171,14 +171,19 @@ class Game:
                 self.list['food'].remove(sprite)
                 self.player.set_lives(self.player.get_lives() -1)
 
+##Abstração
     def manage(self):
-        r = Random.randint( 0, 60 )
-        x = Random.randint( 200, 600 )
-        if (r > (self.nivel * len(self.list['food']))): 
-            food = imcomidas([0, 0])
-            size  = food.get_size()
-            food.set_pos([x , - size[1]])
-            self.list['food'].add(food)
+        r = Random.randint(0, 60)
+        if r > (self.nivel * len(self.list['food'])):
+            self.list['food'].add(self.cria_comida())
+
+    def cria_comida(self):
+        x = Random.randint(200, 600)
+        food = imcomidas([0, 0])
+        size = food.get_size()
+        food.set_pos([x, -size[1]])
+        return food
+###
 
     #tela de menu
     def menu(self):
